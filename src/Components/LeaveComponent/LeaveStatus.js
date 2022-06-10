@@ -29,16 +29,12 @@ const data = [
     Cancel: [<Button danger><CloseOutlined /> Cancel</Button>]
   },
 ];
-function onChange(pagination, filters, sorter, extra) 
-{
-console.log('params', pagination, filters, sorter, extra);
-}
 
 const LeaveStatus = () => {
   return (
     <div>
       <h2 align="center">Leave Status</h2>
-      <Table dataSource={data} onChange={onChange} tableLayout="fixed">
+      <Table dataSource={data} tableLayout="fixed">
         <Column title="Leave Type" dataIndex="LeaveType" key="LeaveType" />
         <Column title="Start Date" dataIndex="S_date" key="S_date" />
         <Column title="End Date" dataIndex="E_date" key="E_date" />
