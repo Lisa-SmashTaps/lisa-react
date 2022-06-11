@@ -29,10 +29,6 @@ const data = [
     Cancel: [<Button danger><CloseOutlined /> Cancel</Button>]
   },
 ];
-function onChange(pagination, filters, sorter, extra) 
-{
-console.log('params', pagination, filters, sorter, extra);
-}
 
 const LeaveStatus = () => {
   return (
