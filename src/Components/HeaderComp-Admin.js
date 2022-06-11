@@ -56,7 +56,7 @@ import PageNotFound from "./PageNotFound";
                         <ToolOutlined />
                         <span>Admin Tools</span>
                         
-                    </> } 
+                    </> } triggerSubMenuAction="hover"
                     >
                         <Menu.Item>Payroll</Menu.Item>
                         <Link to='/requestedleaves'>
