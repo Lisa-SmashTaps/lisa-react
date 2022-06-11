@@ -1,13 +1,14 @@
 import React from "react";
-import LeaveMain from "./LeaveComponent/LeaveMain";
-import Home from "./Home";
 import Logo from "./Smashtaps-logo.png";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Layout, Menu, Row, Col } from "antd";
+import { Layout, Menu } from "antd";
 import { Link } from "react-router-dom";
+import Home from "./Home";
 import PayrollSearch from "./PayrollComponent/payrollSearch";
 import DisplayProfile from "./ProfileComponent/DisplayProfile";
+import LeaveMain from "./LeaveComponent/Employee/LeaveMain";
 import RewardDisplay from "./RewardsComponent/RewardDisplay";
+import PageNotFound from "./PageNotFound";
 const { Header, Content } = Layout;
 
   const Head =() =>{
@@ -28,6 +29,7 @@ const { Header, Content } = Layout;
                 <Route exact path='/leave' element={<LeaveMain/>} />
                 <Route exact path='/profile' element={<DisplayProfile/>}/>
                 <Route exact path='/rewards' element={<RewardDisplay/>}/>
+                <Route exact path='*' element={<PageNotFound/>}/>
             </Routes>
         </Router>
         </div>

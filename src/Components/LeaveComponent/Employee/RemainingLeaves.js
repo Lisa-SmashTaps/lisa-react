@@ -9,7 +9,6 @@ const LEAVES = [
   "Feeding Hours",
   "Lieu Leave",
 ];
-
 const RemLeaves = () => {
   return (
     <div className="Leave_Main">

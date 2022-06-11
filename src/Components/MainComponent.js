@@ -1,5 +1,5 @@
 import React from "react";
-import Head from "./HeaderComponent";
+import Head from "./HeaderComp-Admin";
 
 function Main (){
     return(
