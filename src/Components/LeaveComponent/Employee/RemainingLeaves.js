@@ -1,7 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { Card, Col, Row } from 'antd';
-
 const LEAVES = [
   "Annual Leave",
   "Casual Leave",
@@ -22,7 +21,7 @@ const RemLeaves = () => {
         </Col>
       ))}
       </Row>
-  </div>
+    </div>
   );
 };
 export default RemLeaves;
