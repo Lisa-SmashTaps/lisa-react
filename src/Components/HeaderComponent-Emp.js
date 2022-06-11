@@ -1,5 +1,5 @@
 import React from "react";
-import LeaveMain from "./LeaveComponent/LeaveMain";
+import LeaveMain from "./LeaveComponent/Employee/LeaveMain";
 import Home from "./Home";
 import Logo from "./Smashtaps-logo.png";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
