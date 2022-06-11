@@ -1,12 +1,11 @@
-import React,{useState}from "react";
-import LeaveMain from "./LeaveComponent/Employee/LeaveMain";
-import LeaveMainAdmin from "./LeaveComponent/Admin/LeaveMain";
-import Home from "./Home";
+import React from "react";
 import Logo from "./Smashtaps-logo.png";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Menu } from "antd";
-import { Link } from "react-router-dom";
 import { HomeOutlined, DollarOutlined ,CalendarOutlined ,UserOutlined, StarOutlined ,ToolOutlined } from '@ant-design/icons';
+import Home from "./Home";
+import LeaveMain from "./LeaveComponent/Employee/LeaveMain";
+import LeaveMainAdmin from "./LeaveComponent/Admin/LeaveMainAdmin";
 import PayrollSearch from "./PayrollComponent/payrollSearch";
 import DisplayProfile from "./ProfileComponent/DisplayProfile";
 import RewardDisplay from "./RewardsComponent/RewardDisplay";

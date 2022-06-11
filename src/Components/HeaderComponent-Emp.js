@@ -1,12 +1,12 @@
 import React from "react";
-import LeaveMain from "./LeaveComponent/Employee/LeaveMain";
-import Home from "./Home";
 import Logo from "./Smashtaps-logo.png";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import { Link } from "react-router-dom";
+import Home from "./Home";
 import PayrollSearch from "./PayrollComponent/payrollSearch";
 import DisplayProfile from "./ProfileComponent/DisplayProfile";
+import LeaveMain from "./LeaveComponent/Employee/LeaveMain";
 import RewardDisplay from "./RewardsComponent/RewardDisplay";
 import PageNotFound from "./PageNotFound";
 const { Header, Content } = Layout;

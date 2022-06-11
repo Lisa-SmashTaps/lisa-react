@@ -1,7 +1,7 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { Card, Col, Row } from 'antd';
-//import { Carousel } from "antd";
+
 const LEAVES = [
   "Annual Leave",
   "Casual Leave",
