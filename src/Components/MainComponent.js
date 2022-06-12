@@ -1,9 +1,13 @@
 import React from "react";
-import Head from "./HeaderComp-Admin";
+import FooterPage from "./Footer";
+import Head from "./HeaderComp-Manager";
 
 function Main (){
     return(
+        <div>
         <Head />
+        <FooterPage/>
+        </div>
     )
 }
 
