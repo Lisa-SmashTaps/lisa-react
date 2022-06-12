@@ -1,14 +1,13 @@
 import React from "react";
-import LeaveMain from "./LeaveComponent/LeaveMain";
+import LeaveMain from "./LeaveComponent/Employee/LeaveMain";
 import Home from "./Home";
 import Logo from "./Smashtaps-logo.png";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Layout, Menu, Row, Col } from "antd";
+import { Menu } from "antd";
 import { Link } from "react-router-dom";
 import PayrollSearch from "./PayrollComponent/payrollSearch";
 import DisplayProfile from "./ProfileComponent/DisplayProfile";
 import RewardDisplay from "./RewardsComponent/RewardDisplay";
-const { Header, Content } = Layout;
 
   const Head =() =>{
       return(
