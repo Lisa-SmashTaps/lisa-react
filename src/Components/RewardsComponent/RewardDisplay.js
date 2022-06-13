@@ -1,7 +1,7 @@
 import React from "react";
 import {Input } from "antd";
 import { InputNumber, Button, Progress } from "antd";
-
+import "./Reward.css";
 
 
   function onChange(value) {
