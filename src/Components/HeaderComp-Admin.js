@@ -7,7 +7,7 @@ import Home from "./Home";
 import LeaveMain from "./LeaveComponent/Employee/LeaveMain";
 // import LeaveMainAdmin from ""
 import PayrollSearch from "./PayrollComponent/payrollSearch";
-import DisplayProfile from "./ProfileComponent/DisplayProfile";
+import DisplayProfile from "./ProfileComponent/ProfileForm";
 import RewardDisplay from "./RewardsComponent/RewardDisplay";
 import PageNotFound from "./PageNotFound";
 
