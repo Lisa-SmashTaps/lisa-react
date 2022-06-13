@@ -1,7 +1,7 @@
 import "antd/dist/antd.css";
 import React from "react";
 import { DatePicker, Row, Col, Button, Input, Form } from 'antd';
-const PayrollData = () =>{
+const PayrollAdmin = () =>{
     return(
         <div>
             <Row>
@@ -75,4 +75,4 @@ const PayrollData = () =>{
         </div>
     );
 };
-export default PayrollData;
+export default PayrollAdmin;
