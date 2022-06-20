@@ -5,7 +5,7 @@ import { Menu } from "antd";
 import { HomeOutlined, DollarOutlined ,CalendarOutlined ,UserOutlined, StarOutlined ,ToolOutlined } from '@ant-design/icons';
 import Home from "./Home";
 import LeaveMain from "./LeaveComponent/Employee/LeaveMain";
-// import LeaveMainAdmin from ""
+import LeaveMainAdmin from "./LeaveComponent/Admin/AdminLeave";
 import PayrollSearch from "./PayrollComponent/payrollSearch";
 import DisplayProfile from "./ProfileComponent/DisplayProfile";
 import RewardDisplay from "./RewardsComponent/RewardDisplay";
@@ -70,7 +70,7 @@ import PageNotFound from "./PageNotFound";
                 <Route exact path='/myleaves' element={<LeaveMain/>} />
                 <Route exact path='/myprofile' element={<DisplayProfile/>}/>
                 <Route exact path='/myrewards' element={<RewardDisplay/>}/>
-                {/* <Route exact path='/requestedleaves' element={<LeaveMainAdmin/>}/> */}
+                <Route exact path='/requestedleaves' element={<LeaveMainAdmin/>}/>
                 <Route exact path='*' element={<PageNotFound/>}/>
             </Routes>
         </Router>
