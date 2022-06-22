@@ -1,9 +1,11 @@
 import React from "react";
-import Head from "./HeaderComp-Admin";
+import Head from "./HeaderComponent-Emp";
 
 function Main (){
     return(
+        <div>
         <Head />
+        </div>
     )
 }
 

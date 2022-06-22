@@ -5,7 +5,6 @@ const { Column } = Table;
 const LeaveMainAdmin = () =>{
     return(
         <div className="LeaveMainAdmin">
-        <h1>Requested Leaves</h1>
         <Table tableLayout="fixed">
             <Column title="Employee ID" dataIndex="EmpID" key="EmpID" />
             <Column title="Employee Name" dataIndex="EmpName" key="EmpName" />
