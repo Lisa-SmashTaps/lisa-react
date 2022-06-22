@@ -3,7 +3,9 @@ import Head from "./HeaderComponent-Emp";
 
 function Main (){
     return(
+        <div>
         <Head />
+        </div>
     )
 }
 
