@@ -1,12 +1,10 @@
 import React from "react";
-import FooterPage from "./Footer";
-import Head from "./HeaderComp-Manager";
+import Head from "./HeaderComponent-Emp";
 
 function Main (){
     return(
         <div>
         <Head />
-        <FooterPage/>
         </div>
     )
 }

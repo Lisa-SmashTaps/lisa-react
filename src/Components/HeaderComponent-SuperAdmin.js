@@ -5,10 +5,12 @@ import { Menu } from "antd";
 import { HomeOutlined, DollarOutlined ,CalendarOutlined ,UserOutlined, StarOutlined ,ToolOutlined } from '@ant-design/icons';
 import Home from "./Home";
 import LeaveMain from "./LeaveComponent/Employee/LeaveMain";
-// import LeaveMainAdmin from ""
+import LeaveMainAdmin from "./LeaveComponent/Admin/LeaveMainAdmin";
 import PayrollSearch from "./PayrollComponent/payrollSearch";
+import PayrollAdmin from "./PayrollComponent/PayrollAdmin";
 import DisplayProfile from "./ProfileComponent/ProfileForm";
 import RewardDisplay from "./RewardsComponent/RewardDisplay";
+import CreateAccount from "./LoginComponent/CreateAccount";
 import PageNotFound from "./PageNotFound";
 
   const Head =() =>{
@@ -58,9 +60,14 @@ import PageNotFound from "./PageNotFound";
                         
                     </> } triggerSubMenuAction="hover"
                     >
-                        <Menu.Item>Payroll</Menu.Item>
+                        <Link to='/adminpayroll'>
+                            <Menu.Item>Payroll</Menu.Item>
+                        </Link>
                         <Link to='/requestedleaves'>
                             <Menu.Item>Leaves</Menu.Item>
+                        </Link>
+                        <Link to='/createaccount'>
+                            <Menu.Item>Create Employee Accounts</Menu.Item>
                         </Link>
                      </Menu.SubMenu>
             </Menu>
@@ -70,7 +77,9 @@ import PageNotFound from "./PageNotFound";
                 <Route exact path='/myleaves' element={<LeaveMain/>} />
                 <Route exact path='/myprofile' element={<DisplayProfile/>}/>
                 <Route exact path='/myrewards' element={<RewardDisplay/>}/>
-                {/* <Route exact path='/requestedleaves' element={<LeaveMainAdmin/>}/> */}
+                <Route exact path='/adminpayroll' element={<PayrollAdmin />}/>
+                <Route exact path='/requestedleaves' element={<LeaveMainAdmin/>}/>
+                <Route exact path='/createaccount' element={<CreateAccount/>} />
                 <Route exact path='*' element={<PageNotFound/>}/>
             </Routes>
         </Router>
