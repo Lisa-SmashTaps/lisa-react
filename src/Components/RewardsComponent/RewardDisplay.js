@@ -1,7 +1,9 @@
 import React from "react";
 import {Input } from "antd";
-import { InputNumber, Button, Progress } from "antd";
+import { InputNumber, Button, Progress,  Col } from "antd";
 import "./Reward.css";
+import {RewardCancelButton} from "./RewardButton";
+
 
   function onChange(value) {
     console.log("changed", value);
@@ -31,9 +33,18 @@ const RewardDisplay =() =>{
                 height:"100px",
               }}
             />
-            <space >
-          <Button type="primary" htmlType="submit" style={{marginTop:"50px", marginLeft:"60%"}}  >
-            Submit
-          </Button></space> </div>
+
+
+            <div  style={{ display:"inline-block"}}>
+
+            
+            <Button type="primary" htmlType="submit" style={{marginTop:"50px", marginLeft:"53%", width:"150px" }} >
+            Submit </Button>
+            <RewardCancelButton /></div>
+           
+          
+           </div>
     );}
+
+
 export default RewardDisplay;
