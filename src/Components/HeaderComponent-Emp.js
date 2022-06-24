@@ -21,7 +21,7 @@ const { Header, Content } = Layout;
                     <Link to='/profile'><Menu.Item>Profile</Menu.Item></Link>
                     <Link to='/payroll'><Menu.Item>Payroll</Menu.Item></Link>
                     <Link to='/leave'><Menu.Item>Leave</Menu.Item></Link>
-                    <Link to='/rewards'><Menu.Item>Reward</Menu.Item></Link>
+                    
             </Menu>
             <Routes>
                 <Route exact path='/' element={<Home/>}/>
