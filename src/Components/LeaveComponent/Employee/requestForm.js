@@ -1,89 +1,139 @@
-import React from "react";
+import React, { useState } from "react";
 import "antd/dist/antd.css";
-import { CloseOutlined, PlusOutlined } from '@ant-design/icons';
+import { CloseOutlined, PlusOutlined } from "@ant-design/icons";
 import { Form, Select, DatePicker, Space, Button, Input, Drawer } from "antd";
+import moment from 'moment';
+
 const { RangePicker } = DatePicker;
+
 const { Option } = Select;
 const { TextArea } = Input;
 const LEAVES = [
-  "Annual Leave",
-  "Casual Leave",
-  "Medical Leave",
-  "Paternity Leave",
-  "Feeding Hours",
-  "Lieu Leave",
+  {name:"Annual Leave", count:14, value:'annual'},
+  {name:"Casual Leave", count:7, value:'casual'},
+  {name:"Medical Leave", count:7, value:'medical'},
+  {name:"Maternity/Paternity Leave", count:7, value:'paternity'},
+  {value:"lieu", name:"Lieu Leave"},
 ];
-class LeaveReqForm extends React.Component {
-  state = { visible: false };
-  showDrawer = () => {
-    this.setState({
-      visible: true,
-    });
+const LeaveReqForm = (props) => {
+
+  const [visible, setVisible] = useState(false);
+  const [formState, setFormState] = useState({
+    leaveType:'',
+    comment:'',
+    startDate:'',
+    endDate:''
+  })
+
+  const onChange=(e)=>{
+    const {name, value} = e.target;
+
+    setFormState({
+      ...formState,
+      [name]: value
+    })
+  }
+
+  const showDrawer = () => {
+    setVisible(true);
   };
 
-  onClose = () => {
-    this.setState({
-      visible: false,
-    });
+  const onClose = () => {
+    setVisible(false);
   };
-    render(){
-      return (
-        <div className="leave_req_form">
-          <Button type="primary" onClick={this.showDrawer} icon={<PlusOutlined />}>
+
+  const handleSubmit = () => {
+    alert("Hello");
+    console.log("Hello");
+  }
+
+  console.log(formState)
+
+  return (
+    <div className="leave_req_form">
+      <Button type="primary" onClick={showDrawer} icon={<PlusOutlined />}>
+        Request Leave
+      </Button>
+      <Drawer
+        title="Leave Request Form"
+        width={580}
+        onClose={onClose}
+        visible={visible}
+        bodyStyle={{ paddingBottom: 80 }}
+        extra={
+          <Space>
+            <Button onClick={onClose} icon={<CloseOutlined />}>
+              Cancel
+            </Button>
+            <Button onClick={handleSubmit} type="primary">
               Request Leave
-          </Button>
-          <Drawer title="Leave Request Form"
-              width={580}
-              onClose={this.onClose}
-              visible={this.state.visible}
-              bodyStyle={{ paddingBottom: 80 }}
-              extra={
-                <Space>
-                  <Button onClick={this.onClose} icon={<CloseOutlined/>}>Cancel</Button>
-                  <Button onClick={this.onClose} type="primary">
-                    Request Leave
-                  </Button>
-                </Space>
-              }
+            </Button>
+          </Space>
+        }
+      >
+        <Form>
+          <Space direction="vertical">
+            <Form.Item
+              label="Leave Type: "
+              name="LEAVE_TYPE"
+              rules={[{ required: true }]}
             >
-          <Form>
-            <Space direction="vertical">
-              <Form.Item
-                label="Leave Type: "
-                name="LEAVE_TYPE"
-                rules={[{ required: true }]}
+              <Select
+                name='leaveType'
+                className="leaveType"
+                placeholder="--Select--"
+                style={{ width: "80%" }}
+                onChange={(e)=> {
+                  setFormState({ ...formState, leaveType: e})
+                }}
+                value={formState.leaveType}
               >
-                <Select
-                  className="leaveType"
-                  placeholder="--Select--"
-                  style={{ width: "80%" }}
-                >
-                  {LEAVES.map((leave) => (
-                    <Option value={leave} key={leave}>
-                      {leave}
-                    </Option>
-                  ))}
-                </Select>
-              </Form.Item>
-              <Form.Item label="Leave Balance: " name="LEAVE_BAL">
-                <Input disabled />
-              </Form.Item>
-              <Form.Item
-                label="Time Period: "
-                name="PERIOD"
-                rules={[{ required: true }]}
-              >
-                <RangePicker id="Period" />
-              </Form.Item>
-              <Form.Item label="Comment: " name="COMMENT">
-                <TextArea id="LeaveComment" />
-              </Form.Item>
-            </Space>
-          </Form>
-          </Drawer>
-        </div>
-      );
-    };
-  };
+                {LEAVES.map((leave) => (
+                  <Option value={leave.value} key={leave.value}>
+                    {leave.name}
+                  </Option>
+                ))}
+              </Select>
+            </Form.Item>
+            <Form.Item label="Leave Balance: " name="LEAVE_BAL">
+              <div>
+                {formState.leaveType ? formState.leaveType === 'lieu' ? 'Has to be accepted by a Manager' : (LEAVES.find((el)=> el.value === formState.leaveType).count - (props.remainLeaves[formState.leaveType] ? props.remainLeaves[formState.leaveType] : 0)) : ''}
+              </div>
+            </Form.Item>
+            <Form.Item
+              label="Time Period: "
+              name="PERIOD"
+              rules={[{ required: true }]}
+            >
+              <RangePicker 
+              onChange={(e)=>{
+                let data = {
+                  startDate: moment(e[0]).format('YYYY-MM-DD'),
+                  endDate: moment(e[1]).format('YYYY-MM-DD'),
+                }
+
+                setFormState({
+                  ...formState,
+                  ...data
+                })
+              }} 
+              id="Period" 
+              name='period' 
+              />
+            </Form.Item>
+            <Form.Item label="Comment: " name="COMMENT">
+              <TextArea 
+              id="LeaveComment" 
+              name='comment'
+              onChange={onChange}
+              value={formState.comment}
+              />
+            </Form.Item>
+          </Space>
+        </Form>
+      </Drawer>
+    </div>
+  );
+};
 
 export default LeaveReqForm;

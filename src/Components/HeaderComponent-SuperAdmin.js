@@ -4,12 +4,13 @@ import {BrowserRouter as Router, Routes , Route , Link } from "react-router-dom"
 import { Menu } from "antd";
 import { HomeOutlined, DollarOutlined ,CalendarOutlined ,UserOutlined, StarOutlined ,ToolOutlined } from '@ant-design/icons';
 import Home from "./Home";
-import LeaveMainAdmin from "./LeaveComponent/Admin/AdminLeaves";
 import LeaveMain from "./LeaveComponent/Employee/LeaveMain";
-import AdminPayroll from "./PayrollComponent/AdminPayroll";
+import LeaveMainAdmin from "./LeaveComponent/Admin/LeaveMainAdmin";
 import PayrollSearch from "./PayrollComponent/payrollSearch";
-import DisplayProfile from "./ProfileComponent/DisplayProfile";
+import PayrollAdmin from "./PayrollComponent/PayrollAdmin";
+import DisplayProfile from "./ProfileComponent/ProfileForm";
 import RewardDisplay from "./RewardsComponent/RewardDisplay";
+import CreateAccount from "./LoginComponent/CreateAccount";
 import PageNotFound from "./PageNotFound";
 
   const Head =() =>{
@@ -61,9 +62,12 @@ import PageNotFound from "./PageNotFound";
                     >
                         <Link to='/adminpayroll'>
                             <Menu.Item>Payroll</Menu.Item>
-                            </Link>
+                        </Link>
                         <Link to='/requestedleaves'>
                             <Menu.Item>Leaves</Menu.Item>
+                        </Link>
+                        <Link to='/createaccount'>
+                            <Menu.Item>Create Employee Accounts</Menu.Item>
                         </Link>
                      </Menu.SubMenu>
             </Menu>
@@ -73,8 +77,9 @@ import PageNotFound from "./PageNotFound";
                 <Route exact path='/myleaves' element={<LeaveMain/>} />
                 <Route exact path='/myprofile' element={<DisplayProfile/>}/>
                 <Route exact path='/myrewards' element={<RewardDisplay/>}/>
-                <Route exact path='/adminpayroll' element={<AdminPayroll/>}/>
+                <Route exact path='/adminpayroll' element={<PayrollAdmin />}/>
                 <Route exact path='/requestedleaves' element={<LeaveMainAdmin/>}/>
+                <Route exact path='/createaccount' element={<CreateAccount/>} />
                 <Route exact path='*' element={<PageNotFound/>}/>
             </Routes>
         </Router>

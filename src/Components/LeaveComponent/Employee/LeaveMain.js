@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LeaveReqForm from "./requestForm";
 import RemLeaves from "./RemainingLeaves";
 import LeaveStatus from "./LeaveStatus";
 import { Layout, Row, Col } from "antd";
+import HttpCommon from "../../../http-common";
+
 const { Content } = Layout;
 
 const LeaveMain =() => {
+
+  const [remainLeaves, setRemainLeaves] = useState({})
+
+  useEffect(()=>{
+    getRemainData();
+  },[])
+
+
+  function getRemainData() {
+    HttpCommon.get(`/api/leaveRequest/getRemainLeaveCountByEmpID/E001`)
+    .then((response) => {
+      setRemainLeaves(response.data);
+    });
+  }
+
   return (
     <div className="LeaveMain">
     <Layout className="Leave-layout">
@@ -16,10 +33,10 @@ const LeaveMain =() => {
                 <h1 align="center">My Leaves</h1>
               </Col>
               <Col span={4} style={{padding:"6px"}}>
-                <LeaveReqForm />
+                <LeaveReqForm remainLeaves={remainLeaves} />
               </Col>
           </Row>
-          <RemLeaves />
+          <RemLeaves remainLeaves={remainLeaves} />
           <LeaveStatus />
         </div>
       </Content>
