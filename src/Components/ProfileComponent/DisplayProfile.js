@@ -53,7 +53,7 @@ function DisplayProfile() {
         <h4>Interests: </h4>
       </Row>
       <span>
-      <h4>Professional achievements: </h4>
+      <h4>Reward achievements: </h4>
       <Progress
       type="circle"
       strokeColor={{
