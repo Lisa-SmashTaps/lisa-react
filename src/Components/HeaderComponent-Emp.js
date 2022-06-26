@@ -8,6 +8,7 @@ import PayrollSearch from "./PayrollComponent/payrollSearch";
 import DisplayProfile from "./ProfileComponent/DisplayProfile";
 import LeaveMain from "./LeaveComponent/Employee/LeaveMain";
 import RewardDisplay from "./RewardsComponent/RewardDisplay";
+import SearchBox from "./RewardsComponent/SearchBox";
 import PageNotFound from "./PageNotFound";
 const { Header, Content } = Layout;
 
@@ -21,6 +22,7 @@ const { Header, Content } = Layout;
                     <Link to='/profile'><Menu.Item>Profile</Menu.Item></Link>
                     <Link to='/payroll'><Menu.Item>Payroll</Menu.Item></Link>
                     <Link to='/leave'><Menu.Item>Leave</Menu.Item></Link>
+                    <Link to ='search'><Menu.Item>Search</Menu.Item></Link>
                     
             </Menu>
             <Routes>
@@ -29,6 +31,7 @@ const { Header, Content } = Layout;
                 <Route exact path='/leave' element={<LeaveMain/>} />
                 <Route exact path='/profile' element={<DisplayProfile/>}/>
                 <Route exact path='/rewards' element={<RewardDisplay/>}/>
+                <Route exact path='/search' element={<SearchBox/>}/>
                 <Route exact path='*' element={<PageNotFound/>}/>
             </Routes>
         </Router>
