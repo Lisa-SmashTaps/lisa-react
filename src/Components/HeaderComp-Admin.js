@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "./Smashtaps-logo.png";
 import {BrowserRouter as Router, Routes , Route , Link } from "react-router-dom";
 import { Menu } from "antd";
-import { HomeOutlined, DollarOutlined ,CalendarOutlined ,UserOutlined, StarOutlined ,ToolOutlined } from '@ant-design/icons';
+import { SearchOutlined, HomeOutlined, DollarOutlined ,CalendarOutlined ,UserOutlined, StarOutlined ,ToolOutlined } from '@ant-design/icons';
 import Home from "./Home";
 import LeaveMainAdmin from "./LeaveComponent/Admin/AdminLeaves";
 import LeaveMain from "./LeaveComponent/Employee/LeaveMain";
@@ -10,6 +10,8 @@ import AdminPayroll from "./PayrollComponent/AdminPayroll";
 import PayrollSearch from "./PayrollComponent/payrollSearch";
 import DisplayProfile from "./ProfileComponent/ProfileForm";
 import RewardDisplay from "./RewardsComponent/RewardDisplay";
+import UserProfile from "./ProfilePage/UserProfile";
+import Search from "./ProfilePage/Search";
 import PageNotFound from "./PageNotFound";
 import AllPayRoll from "./PayrollComponent/AllPayRoll";
 import EditPayroll from "./PayrollComponent/EditPayroll";
@@ -68,6 +70,12 @@ import EditPayroll from "./PayrollComponent/EditPayroll";
                             <Menu.Item>Leaves</Menu.Item>
                         </Link>
                      </Menu.SubMenu>
+                     <Link to='/searchuser'>
+                     <Menu.Item>
+                            <SearchOutlined /> 
+                            <span>Search</span>
+                    </Menu.Item>
+                    </Link>
             </Menu>
             <Routes>
                 <Route exact path='/' element={<Home/>}/>
@@ -79,6 +87,8 @@ import EditPayroll from "./PayrollComponent/EditPayroll";
                 <Route exact path='/requestedleaves' element={<LeaveMainAdmin/>}/>
                 <Route exact path='/allpayroll' element={<AllPayRoll/>}/>
                 <Route exact path='/editpayroll/:id' element={<EditPayroll/>}/>
+                <Route exact path='/profile/:id' element={<UserProfile/>}/>
+                <Route exact path='/searchuser' element={<Search/>}/>
                 <Route exact path='*' element={<PageNotFound/>}/>
             </Routes>
         </Router>

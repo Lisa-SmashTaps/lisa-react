@@ -10,9 +10,11 @@ const { Content } = Layout;
 const LeaveMain =() => {
 
   const [remainLeaves, setRemainLeaves] = useState({})
+  const [leaveTypes, setLeaveTypes] = useState({})
 
   useEffect(()=>{
     getRemainData();
+    GetLeaveTypes();
   },[])
 
 
@@ -22,9 +24,19 @@ const LeaveMain =() => {
       setRemainLeaves(response.data);
     });
   }
+  console.log(remainLeaves)
+
+  //get leave types
+  function GetLeaveTypes() {
+  
+    HttpCommon.get(`http://localhost:3005/api/leaveType/`).then((response) => {
+      console.log(response.data.data);
+      setLeaveTypes(response.data.data);
+    });
+  }
 
   return (
-    <div className="LeaveMain">
+    <div style={{height:100}} className="LeaveMain">
     <Layout className="Leave-layout">
       <Content style={{ padding: '0 50px' }}>
         <div className="Leave-layout-content">
@@ -33,11 +45,11 @@ const LeaveMain =() => {
                 <h1 align="center">My Leaves</h1>
               </Col>
               <Col span={4} style={{padding:"6px"}}>
-                <LeaveReqForm remainLeaves={remainLeaves} />
+                <LeaveReqForm remainLeaves={remainLeaves} leaveTypes={leaveTypes.Items?leaveTypes.Items:[]}/>
               </Col>
           </Row>
-          <RemLeaves remainLeaves={remainLeaves} />
-          <LeaveStatus />
+          <RemLeaves remainLeaves={remainLeaves} leaveTypes={leaveTypes.Items?leaveTypes.Items:[]} />
+          <LeaveStatus leaveTypes={leaveTypes.Items?leaveTypes.Items:[]}/>
         </div>
       </Content>
   </Layout>
