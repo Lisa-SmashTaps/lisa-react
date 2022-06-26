@@ -10,9 +10,11 @@ const { Content } = Layout;
 const LeaveMain =() => {
 
   const [remainLeaves, setRemainLeaves] = useState({})
+  const [leaveTypes, setLeaveTypes] = useState({})
 
   useEffect(()=>{
     getRemainData();
+    GetLeaveTypes();
   },[])
 
 
@@ -20,6 +22,16 @@ const LeaveMain =() => {
     HttpCommon.get(`/api/leaveRequest/getRemainLeaveCountByEmpID/E001`)
     .then((response) => {
       setRemainLeaves(response.data);
+    });
+  }
+  console.log(remainLeaves)
+
+  //get leave types
+  function GetLeaveTypes() {
+  
+    HttpCommon.get(`http://localhost:3005/api/leaveType/`).then((response) => {
+      console.log(response.data.data);
+      setLeaveTypes(response.data.data);
     });
   }
 
@@ -33,11 +45,11 @@ const LeaveMain =() => {
                 <h1 align="center">My Leaves</h1>
               </Col>
               <Col span={4} style={{padding:"6px"}}>
-                <LeaveReqForm remainLeaves={remainLeaves} />
+                <LeaveReqForm remainLeaves={remainLeaves} leaveTypes={leaveTypes.Items?leaveTypes.Items:[]}/>
               </Col>
           </Row>
-          <RemLeaves remainLeaves={remainLeaves} />
-          <LeaveStatus />
+          <RemLeaves remainLeaves={remainLeaves} leaveTypes={leaveTypes.Items?leaveTypes.Items:[]} />
+          <LeaveStatus leaveTypes={leaveTypes.Items?leaveTypes.Items:[]}/>
         </div>
       </Content>
   </Layout>

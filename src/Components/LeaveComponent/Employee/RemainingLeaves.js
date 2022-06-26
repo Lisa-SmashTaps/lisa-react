@@ -5,17 +5,17 @@ const LEAVES = [
   {name:"Annual Leave", count:14, value:'annual'},
   {name:"Casual Leave", count:7, value:'casual'},
   {name:"Medical Leave", count:7, value:'medical'},
-  {name:"Maternity/Paternity Leave", count:7, value:'paternity'},
+  {name:"Paternity Leave", count:7, value:'paternity'},
 ];
 const RemLeaves = (props) => {
   console.log(props)
   return (
     <div className="Leave_Main">
       <Row gutter={16}>
-      {LEAVES.map((leave) => (
+      {props.leaveTypes.map((leave) => (
         <Col span={4}>
-          <Card title={leave.name} bordered={false}>
-            {props.remainLeaves[leave.value] ? leave.count - props.remainLeaves[leave.value] : leave.count}
+          <Card title={leave.LeaveName} bordered={false}>
+            {leave.Count ? props.remainLeaves[leave.TypeID] ? leave.Count - props.remainLeaves[leave.TypeID] : leave.Count : "Has to be approved by a manager"}
           </Card>
         </Col>
       ))}
