@@ -15,3 +15,8 @@ code {
 .ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
   background-color: transparent !important;
 }
+
+.ant-btn ant-btn-primary{
+  background-color:darkgreen !important;
+  border-color:darkgreen;
+}

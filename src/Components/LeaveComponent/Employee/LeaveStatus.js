@@ -1,12 +1,39 @@
 import React, { useEffect, useState } from "react";
 import "antd/dist/antd.css";
-import { Table, Button } from "antd";
-import { CloseOutlined } from "@ant-design/icons";
+import { Table,Button } from "antd";
 import HttpCommon from "../../../http-common";
 import "./Status.css"
-const { Column } = Table;
+import DisabledContext from "antd/lib/config-provider/DisabledContext";
 
 const LeaveStatus = (props) => {
+//   const columns = [
+//     {
+//       title: 'Leave Type',
+//       dataIndex: 'TypeID',
+//       key: 'TypeID'
+//     }, {
+//       title: 'Start Date',
+//       dataIndex: 'StartDate',
+//       key: 'StartDate'
+//     },{
+//       title: 'End Date',
+//       dataIndex: 'EndDate',
+//       key: 'EndDate'
+//     },{
+//       title: 'Comment',
+//       dataIndex: 'Comment',
+//       key: 'Comment'
+//     },{
+//       title: 'Status',
+//       dataIndex: 'Approval',
+//       key: 'Approval'
+//     },{
+//       title: 'Cancel Leave',
+//       dataIndex: 'Cancel',
+//       key: 'Cancel',
+//     render: (record)=> (<Button danger onClick={() => cancelRequest(record)}>Cancel</Button>)
+//     }
+//   ]
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -32,15 +59,6 @@ const LeaveStatus = (props) => {
   return (
     <div>
       <h2 align="center">Leave Status</h2>
-      {/* <Table dataSource={data} tableLayout="fixed">
-        <Column title="Leave Type" dataIndex="TypeID" key="TypeID" />
-        <Column title="Start Date" dataIndex="StartDate" key="StartDate" />
-        <Column title="End Date" dataIndex="EndDate" key="EndDate" />
-        <Column title="Comment" dataIndex="Comment" key="Comment" />
-        <Column title="Status" dataIndex="True" key="Status" />
-        <Column title="Cancel Leave" dataIndex="ReqID" key="Cancel" onCellClick={cancelRequest("ReqID")} />
-        {/* {Status? <button/> : <></>} 
-      </Table> */}
       <table>
         <thead>
           <tr>
@@ -56,17 +74,22 @@ const LeaveStatus = (props) => {
           {
             data.map((req) => (
               <tr key={req.ReqID}>
-                <td data-label="LeaveType"><h6>{props.leaveTypes.find((el)=> el.TypeID === req.TypeID) ? props.leaveTypes.find((el)=> el.TypeID === req.TypeID).LeaveName : req.TypeID}</h6> </td>
-                <td data-label="StartDate"><h6>{req.StartDate}</h6></td>
-                <td data-label="EndDate"><h6>{req.EndDate}</h6></td>
-                <td data-label="Comment"><h6>{req.Comment}</h6></td>
-                <td data-label="Status"><h6>{req.Approval}</h6></td>
-                <td data-label="Cancel">{req.Approval === 'Pending' ? <button onClick={()=>cancelRequest(req.ReqID)}>Cancel</button> : '--'}</td>
+                <td data-label="LeaveType">{props.leaveTypes.find((el) => el.TypeID === req.TypeID) ? props.leaveTypes.find((el) => el.TypeID === req.TypeID).LeaveName : req.TypeID} </td>
+                <td data-label="StartDate">{req.StartDate}</td>
+                <td data-label="EndDate">{req.EndDate}</td>
+                <td data-label="Comment">{req.Comment}</td>
+                <td data-label="Status">{req.Approval}</td>
+                <td data-label="Cancel">{req.Approval === 'Pending' ? <Button danger onClick={() => cancelRequest(req.ReqID)}>Cancel</Button> : '--'}</td>
               </tr>
             ))
           }
         </tbody>
       </table>
+      {/* <Table 
+            dataSource={data}
+            columns={columns}
+            tableLayout="fixed"
+        /> */}
     </div>
   );
 };

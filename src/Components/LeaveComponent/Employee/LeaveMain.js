@@ -36,7 +36,7 @@ const LeaveMain =() => {
   }
 
   return (
-    <div className="LeaveMain">
+    <div style={{height:100}} className="LeaveMain">
     <Layout className="Leave-layout">
       <Content style={{ padding: '0 50px' }}>
         <div className="Leave-layout-content">
