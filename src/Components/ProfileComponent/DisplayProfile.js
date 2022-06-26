@@ -5,9 +5,6 @@ import { Row, Col, Progress} from "antd";
 import ProfileForm from "./ProfileForm";
 import RewardPageButton from "../RewardsComponent/RewardButton";
 
-
-
-
 function DisplayProfile() {
   return (
     <div style={{ padding: 50 }}>
@@ -67,6 +64,8 @@ function DisplayProfile() {
 
       <Row>
       <RewardPageButton /></Row>
+
+ 
       
     </div>
   );

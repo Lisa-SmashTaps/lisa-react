@@ -12,7 +12,7 @@ const SearchBox = () => (
       allowClear
       enterButton="Search Employee"
       size="large"
-      style={{padding:"10px", marginLeft:"10px"}}
+      style={{padding:"10px", marginLeft:"100px"}}
       onSearch={onSearch}
     />
   </Space>
