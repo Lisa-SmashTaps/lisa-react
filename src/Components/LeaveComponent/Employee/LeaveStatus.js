@@ -3,7 +3,6 @@ import "antd/dist/antd.css";
 import { Table,Button } from "antd";
 import HttpCommon from "../../../http-common";
 import "./Status.css"
-import DisabledContext from "antd/lib/config-provider/DisabledContext";
 
 const LeaveStatus = (props) => {
 //   const columns = [
