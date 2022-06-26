@@ -3,6 +3,7 @@ import { UserOutlined } from '@ant-design/icons';
 import { Avatar } from 'antd';
 import { Row, Col, Progress} from "antd";
 import ProfileForm from "./ProfileForm";
+// import CommentList from "../RewardsComponent/ShoutoutArea";
 import RewardPageButton from "../RewardsComponent/RewardButton";
 
 
@@ -66,6 +67,7 @@ function DisplayProfile() {
 
       <Row>
       <RewardPageButton /></Row>
+      {/* <Row> <CommentList /></Row> */}
     </div>
   );
   

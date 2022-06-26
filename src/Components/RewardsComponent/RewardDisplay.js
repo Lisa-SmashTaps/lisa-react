@@ -1,13 +1,12 @@
 import React from "react";
 import {Input } from "antd";
-import { InputNumber, Button, Progress,  Col } from "antd";
+import { InputNumber, Button, Progress } from "antd";
 import "./Reward.css";
 import {RewardCancelButton} from "./RewardButton";
+import ShoutoutArea from "./ShoutoutArea";
 
 
-  function onChange(value) {
-    console.log("changed", value);
-  } 
+ 
 const RewardDisplay =() =>{
     return(
     <div > 
@@ -22,22 +21,12 @@ const RewardDisplay =() =>{
       percent={80} 
       /></div> <div>
 
-     <h2 className="txt"> Offer points:</h2>
-       <InputNumber min={1} max={10} onChange={onChange} style={{marginTop:"50px", marginLeft:"100px"}} />  </div>
-    <h2 className="txt" name="Shoutout"> Shoutout:</h2>
+    
+      <ShoutoutArea />
 
-<Input.TextArea
-              style={{
-                width: "50%",
-                marginLeft:"150px",
-                height:"100px",
-              }}
-            />
-
+</div>
 
             <div  style={{ display:"inline-block"}}>
-
-            
             <Button type="primary" htmlType="submit" style={{marginTop:"50px", marginLeft:"53%", width:"150px" }} >
             Submit </Button>
             <RewardCancelButton /></div>
