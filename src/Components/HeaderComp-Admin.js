@@ -11,6 +11,8 @@ import PayrollSearch from "./PayrollComponent/payrollSearch";
 import DisplayProfile from "./ProfileComponent/ProfileForm";
 import RewardDisplay from "./RewardsComponent/RewardDisplay";
 import PageNotFound from "./PageNotFound";
+import AllPayRoll from "./PayrollComponent/AllPayRoll";
+import EditPayroll from "./PayrollComponent/EditPayroll";
 
   const Head =() =>{
       return(
@@ -75,6 +77,8 @@ import PageNotFound from "./PageNotFound";
                 <Route exact path='/myrewards' element={<RewardDisplay/>}/>
                 <Route exact path='/adminpayroll' element={<AdminPayroll/>}/>
                 <Route exact path='/requestedleaves' element={<LeaveMainAdmin/>}/>
+                <Route exact path='/allpayroll' element={<AllPayRoll/>}/>
+                <Route exact path='/editpayroll/:id' element={<EditPayroll/>}/>
                 <Route exact path='*' element={<PageNotFound/>}/>
             </Routes>
         </Router>

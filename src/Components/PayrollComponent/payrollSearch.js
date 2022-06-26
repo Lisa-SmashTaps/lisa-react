@@ -47,10 +47,6 @@ const PayrollSearch = () => {
     getData();
   };
 
-  useEffect(() => {
-    console.log("drgdfgd");
-    // getData();
-  }, []);
   return (
     <div>
       <Row>
