@@ -71,6 +71,9 @@ const PayrollSearch = () => {
             <DatePicker
               picker="month"
               bordered={true}
+              disabledDate={(current)=>{
+                return current>new Date()
+              }}
               onChange={handleMonth}
               style={{ width: "300px", height: "50px" }}
             />

@@ -4,6 +4,7 @@ import { DatePicker, Row, Col, Button, Input, Form } from "antd";
 import HttpCommon from "../../http-common";
 import { toHaveFormValues } from "@testing-library/jest-dom/dist/matchers";
 import {v4 as uuidv4} from 'uuid'
+
 // {
 //     "BasicSal": 50000,
 //     "EPFEmp": 500,
@@ -101,14 +102,14 @@ const AdminPayroll = () => {
     });
   };
   return (
-    <div>
+    <div className="background">
       <Row>
         <Col span={24}>
-          <h1>Payroll</h1>
+          <h1 style={{textAlign:"center", fontSize:"40px"}}>Payroll</h1>
         </Col>
       </Row>
       <div style={{ padding: "100px" }}>
-        <Form>
+        <Form className="login-form">
           <Row>
             <Col span={8}>
               <Input
@@ -121,9 +122,13 @@ const AdminPayroll = () => {
             <Col span={8}>
               <DatePicker
                 picker="month"
+                disabledDate={(current)=>{
+                  return current>new Date()
+                }}
                 bordered={true}
                 onChange={dateChange}
-              />
+            
+            />
             </Col>
           </Row>
           <Row style={{ padding: "30px" }}>
