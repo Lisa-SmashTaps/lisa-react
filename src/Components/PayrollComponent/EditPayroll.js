@@ -1,17 +1,19 @@
 import "antd/dist/antd.css";
 import React, { useEffect } from "react";
-import { DatePicker, Row, Col, Button, Input, Form } from "antd";
+import { Row, Col, Button, Input, Form } from "antd";
 import HttpCommon from "../../http-common";
-import {v4 as uuidv4} from 'uuid'
+import { v4 as uuidv4 } from "uuid";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-
-const AdminPayroll = () => {
+const EditPayroll = () => {
+  const { id } = useParams();
+  let navigate = useNavigate();
   const [salaryData, setSalaryData] = React.useState({
-    e_name: "",
-    month_date: "",
     basic_salary: 0,
-    allowance_salary: 0
+    allowance_salary: 0,
   });
+  const [data, setData] = React.useState({});
 
   const [calcData, setCalcData] = React.useState({
     gross_salary: 0,
@@ -56,12 +58,23 @@ const AdminPayroll = () => {
     setSalaryData({ ...salaryData, [prop]: event.target.value });
     console.log(salaryData);
   };
-  const dateChange = (date, dataString) => {
-    setSalaryData((prev) => ({
-      ...prev,
-      month_date: dataString,
-    }));
-  };
+
+  function getData(id) {
+    HttpCommon.get(`http://localhost:3005/api/salary/` + id).then(
+      (response) => {
+        console.log(response.data.Item);
+        setData(response.data.Item);
+        setSalaryData({
+          basic_salary: response.data.Item.BasicSal,
+          allowance_salary: response.data.Item.Allowances,
+        });
+      }
+    );
+  }
+
+  useEffect(() => {
+    getData(id);
+  }, [id]);
 
   const handleSubmit = (event) => {
     //call the axios
@@ -69,69 +82,47 @@ const AdminPayroll = () => {
     setCalcData({ salaryData, calcData });
     console.log({ salaryData, calcData });
 
-
-    HttpCommon.post(`/api/salary/`, {
+    HttpCommon.put(`/api/salary/`, {
       BasicSal: salaryData.basic_salary,
       EPFEmp: calcData.epf_employee,
-      SheetID: uuidv4(),
+      SheetID: id,
       EPFComp: calcData.epf_company,
       AdminID: "E002",
-      EmpID: salaryData.e_name,
       ETF: calcData.etf,
-      Month: salaryData.month_date,
       GrossSal: calcData.gross_salary,
       Allowances: salaryData.allowance_salary,
       TotalSal: calcData.gross_salary - (calcData.epf_employee + calcData.etf),
     }).then((response) => {
       console.log(response.data.data);
-
       setSalaryData(response.data.data);
+      navigate("/allpayroll", { replace: true });
     });
   };
   return (
     <div className="background">
       <Row>
         <Col span={24}>
-          <h1 style={{textAlign:"center", fontSize:"40px"}}>Payroll</h1>
+          <h1 style={{ textAlign: "center", fontSize: "40px" }}>Payroll</h1>
         </Col>
       </Row>
       <div style={{ padding: "100px" }}>
         <Form className="login-form">
-          <Row>
-            <Col span={8}>
-              <Input
-                onChange={handleChange("e_name")}
-                placeholder="Enter Employee ID"
-                key={"name"}
-              />
-            </Col>
-
-            <Col span={8}>
-              <DatePicker
-                picker="month"
-                disabledDate={(current)=>{
-                  return current>new Date()
-                }}
-                bordered={true}
-                onChange={dateChange}
-            
-            />
-            </Col>
-          </Row>
           <Row style={{ padding: "30px" }}>
             <Col span={12}>
               <Form.Item label="Basic Salary">
-                <Input
+                <input
                   type="number"
                   placeholder="Rs."
                   style={{ width: "300px" }}
+                  defaultValue={data.BasicSal}
                   onChange={handleChange("basic_salary")}
                 />
               </Form.Item>
             </Col>
             <Col span={12}>
               <Form.Item label="Allowance">
-                <Input
+                <input
+                  defaultValue={data.Allowances}
                   type="number"
                   placeholder="Rs."
                   style={{ width: "300px" }}
@@ -212,7 +203,7 @@ const AdminPayroll = () => {
                   handleSubmit(e);
                 }}
               >
-                Create Paysheet
+                update Paysheet
               </Button>
             </Col>
           </Row>
@@ -221,4 +212,4 @@ const AdminPayroll = () => {
     </div>
   );
 };
-export default AdminPayroll;
+export default EditPayroll;
