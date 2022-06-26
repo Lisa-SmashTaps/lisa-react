@@ -32,12 +32,16 @@ function onChange(value) {
     console.log("changed", value);
   } 
 
+     
+
 const ShoutoutArea = () => {
 
     
   const [comments, setComments] = useState([]);
   const [submitting, setSubmitting] = useState(false);
   const [value, setValue] = useState('');
+
+
 
   const handleSubmit = () => {
     if (!value) return;
@@ -64,27 +68,31 @@ const ShoutoutArea = () => {
   return (
     <>
 
-    <div>  <h2 className="txt"> Offer points:</h2>
+<div>  <h2 className="txt"> Offer points:</h2>
         <InputNumber min={1} max={10} onChange={onChange} style={{marginTop:"50px", marginLeft:"100px"}} />  </div>
       <h2 className="txt" name="Shoutout"> Shoutout:</h2> 
+ 
 
-  
+
       {comments.length > 0 && <CommentList comments={comments} />}
       
-      <Comment
-        avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />}
-        content={
-          <Editor
-            onChange={handleChange}
-            onSubmit={handleSubmit}
-            submitting={submitting}
-            value={value}
-          />
-        }
-      />
-    </>
-  );
-};
-
+       <Comment
+         avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />}
+         content={
+           <Editor
+             onChange={handleChange}
+             onSubmit={handleSubmit}
+             submitting={submitting}
+             value={value}
+           />
+         }
+       />
+     </>
+   );
+ };
 export default ShoutoutArea;
-// export {CommentList};
+export {CommentList}
+
+
+
+ 
