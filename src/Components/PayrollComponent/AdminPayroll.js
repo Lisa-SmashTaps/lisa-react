@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { DatePicker, Row, Col, Button, Input, Form } from "antd";
 import HttpCommon from "../../http-common";
 import { toHaveFormValues } from "@testing-library/jest-dom/dist/matchers";
-
+import {v4 as uuidv4} from 'uuid'
 // {
 //     "BasicSal": 50000,
 //     "EPFEmp": 500,
@@ -22,7 +22,7 @@ const AdminPayroll = () => {
     e_name: "",
     month_date: "",
     basic_salary: 0,
-    allowance_salary: 0,
+    allowance_salary: 0
   });
 
   const [calcData, setCalcData] = React.useState({
@@ -66,6 +66,7 @@ const AdminPayroll = () => {
 
   const handleChange = (prop) => (event) => {
     setSalaryData({ ...salaryData, [prop]: event.target.value });
+    console.log(salaryData);
   };
   const dateChange = (date, dataString) => {
     setSalaryData((prev) => ({
@@ -74,8 +75,30 @@ const AdminPayroll = () => {
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
     //call the axios
+    event.preventDefault();
+    setCalcData({ salaryData, calcData });
+    console.log({ salaryData, calcData });
+
+
+    HttpCommon.post(`/api/salary/`, {
+      BasicSal: salaryData.basic_salary,
+      EPFEmp: calcData.epf_employee,
+      SheetID: uuidv4(),
+      EPFComp: calcData.epf_company,
+      AdminID: "E002",
+      EmpID: salaryData.e_name,
+      ETF: calcData.etf,
+      Month: salaryData.month_date,
+      GrossSal: calcData.gross_salary,
+      Allowances: salaryData.allowance_salary,
+      TotalSal: calcData.gross_salary - (calcData.epf_employee + calcData.etf),
+    }).then((response) => {
+      console.log(response.data.data);
+
+      setSalaryData(response.data.data);
+    });
   };
   return (
     <div>
@@ -90,7 +113,7 @@ const AdminPayroll = () => {
             <Col span={8}>
               <Input
                 onChange={handleChange("e_name")}
-                placeholder="Enter Employee Name"
+                placeholder="Enter Employee ID"
                 key={"name"}
               />
             </Col>
@@ -191,7 +214,14 @@ const AdminPayroll = () => {
           </Row>
           <Row>
             <Col span={24} style={{ padding: "30px" }}>
-              <Button type="submit">Create Paysheet</Button>
+              <Button
+                type="submit"
+                onClick={(e) => {
+                  handleSubmit(e);
+                }}
+              >
+                Create Paysheet
+              </Button>
             </Col>
           </Row>
         </Form>

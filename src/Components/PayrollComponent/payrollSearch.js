@@ -97,19 +97,40 @@ const PayrollSearch = () => {
                 >
                   <Row>
                     <SheetItem title="Sheet ID" data={element.SheetID.S} />
-                    <SheetItem title="Basic Salary" data={element.BasicSal.N} />
+                    <SheetItem
+                      title="Basic Salary"
+                      data={`Rs.${
+                        element.BasicSal.N === undefined
+                          ? element.BasicSal.S
+                          : element.BasicSal.N
+                      }`}
+                    />
                     <SheetItem
                       title="EPF Employee Amount"
-                      data={element.EPFEmp.N}
+                      data={`Rs.${element.EPFEmp.N}`}
                     />
                     <SheetItem
                       title="EPF Company Amount"
-                      data={element.EPFComp.N}
+                      data={`Rs.${element.EPFComp.N}`}
                     />
-                    <SheetItem title="ETF Amount" data={element.ETF.N} />
-                    <SheetItem title="Gross Salary" data={element.GrossSal.N} />
-                    <SheetItem title="Allowances" data={element.Allowances.N} />
-                    <SheetItem title="Total Salary" data={element.TotalSal.N} />
+                    <SheetItem
+                      title="ETF Amount"
+                      data={`Rs.${element.ETF.N}`}
+                    />
+                    <SheetItem
+                      title="Gross Salary"
+                      data={`Rs.${element.GrossSal.N}`}
+                    />
+                    <SheetItem
+                      title="Allowances"
+                      data={`Rs.${element.Allowances.N === undefined
+                        ? element.Allowances.S
+                        : element.Allowances.N}`}
+                    />
+                    <SheetItem
+                      title="Total Salary"
+                      data={`Rs.${element.TotalSal.N}`}
+                    />
                   </Row>
                 </Card>
               </Col>
