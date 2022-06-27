@@ -72,7 +72,7 @@ const DisplayProfile = () => {
         {EmpData !== null &&
           EmpData !== undefined &&
           EmpData.Item !== undefined && (
-            <h4 style={{ marginRight: "50px" }}>{EmpData.Item.DOB}</h4>
+            <h4 style={{ marginRight: "50px" }}>{EmpData.Item.PhoneNo}</h4>
           )}
       </Row>
       <Row>
@@ -80,7 +80,7 @@ const DisplayProfile = () => {
         {EmpData !== null &&
           EmpData !== undefined &&
           EmpData.Item !== undefined && (
-            <h4 style={{ marginRight: "50px" }}>{EmpData.Item.DOB}</h4>
+            <h4 style={{ marginRight: "50px" }}>{EmpData.Item.address}</h4>
           )}
       </Row>
       <Row>
@@ -88,7 +88,7 @@ const DisplayProfile = () => {
         {EmpData !== null &&
           EmpData !== undefined &&
           EmpData.Item !== undefined && (
-            <h4 style={{ marginRight: "50px" }}>{EmpData.Item.DOB}</h4>
+            <h4 style={{ marginRight: "50px" }}>{EmpData.Item.olResult}</h4>
           )}
       </Row>
       <Row>
@@ -96,7 +96,7 @@ const DisplayProfile = () => {
         {EmpData !== null &&
           EmpData !== undefined &&
           EmpData.Item !== undefined && (
-            <h4 style={{ marginRight: "50px" }}>{EmpData.Item.DOB}</h4>
+            <h4 style={{ marginRight: "50px" }}>{EmpData.Item.alResult}</h4>
           )}
       </Row>
       <Row>
@@ -104,7 +104,7 @@ const DisplayProfile = () => {
         {EmpData !== null &&
           EmpData !== undefined &&
           EmpData.Item !== undefined && (
-            <h4 style={{ marginRight: "50px" }}>{EmpData.Item.DOB}</h4>
+            <h4 style={{ marginRight: "50px" }}>{EmpData.Item.HighEdu}</h4>
           )}
       </Row>
       <Row>
@@ -112,7 +112,7 @@ const DisplayProfile = () => {
         {EmpData !== null &&
           EmpData !== undefined &&
           EmpData.Item !== undefined && (
-            <h4 style={{ marginRight: "50px" }}>{EmpData.Item.DOB}</h4>
+            <h4 style={{ marginRight: "50px" }}>{EmpData.Item.WorkingEx}</h4>
           )}
       </Row>
       <Row>
@@ -120,7 +120,7 @@ const DisplayProfile = () => {
         {EmpData !== null &&
           EmpData !== undefined &&
           EmpData.Item !== undefined && (
-            <h4 style={{ marginRight: "50px" }}>{EmpData.Item.DOB}</h4>
+            <h4 style={{ marginRight: "50px" }}>{EmpData.Item.Achivements}</h4>
           )}
       </Row>
       <Row>
@@ -128,7 +128,7 @@ const DisplayProfile = () => {
         {EmpData !== null &&
           EmpData !== undefined &&
           EmpData.Item !== undefined && (
-            <h4 style={{ marginRight: "50px" }}>{EmpData.Item.DOB}</h4>
+            <h4 style={{ marginRight: "50px" }}>{EmpData.Item.Interests}</h4>
           )}
       </Row>
     </div>

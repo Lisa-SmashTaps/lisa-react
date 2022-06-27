@@ -19,6 +19,7 @@ import {
 import { Store } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import HttpCommon from "../../http-common";
+import moment from 'moment';
 
 const getBase64 = (img, callback) => {
   const reader = new FileReader();
@@ -58,6 +59,7 @@ const beforeUpload = (file) => {
 const onFinish = (values) => {
   console.log(values);
 };
+const dateFormat = "YYYY/MM/DD";
 
 class ProfileForm extends React.Component {
   state = {
@@ -104,7 +106,14 @@ class ProfileForm extends React.Component {
       this.state.type = response.data.Item.UserRole;
       this.state.designation = response.data.Item.Designation;
       this.state.lName = response.data.Item.LName;
+      this.state.address = response.data.Item.address;
       this.state.TotPoints = response.data.Item.TotPoints;
+      this.state.olResult = response.data.Item.olResult;
+      this.state.alResult = response.data.Item.alResult;
+      this.state.HighEdu = response.data.Item.HighEdu;
+      this.state.WorkingEx = response.data.Item.WorkingEx;
+      this.state.Achivements = response.data.Item.Achivements;
+      this.state.Interests = response.data.Item.Interests;
     });
   }
 
@@ -112,6 +121,13 @@ class ProfileForm extends React.Component {
     console.log(this.state);
     console.log("Component did update");
   }
+
+  onChange = (date, dateString) => {
+    console.log(date, dateString);
+    this.setState({
+      birthDay: dateString,
+    });
+  };
 
   handleSubmit = (event) => {
     //call the axios
@@ -124,11 +140,18 @@ class ProfileForm extends React.Component {
       EmpID: this.state.empID,
       DOB: this.state.birthDay,
       PhoneNo: this.state.mobileNo,
+      address: this.state.address,
       RemPoints: this.state.RemPoints,
       UserRole: this.state.type,
       Designation: this.state.designation,
       LName: this.state.lName,
       TotPoints: this.state.TotPoints,
+      olResult: this.state.olResult,
+      alResult: this.state.alResult,
+      HighEdu: this.state.HighEdu,
+      WorkingEx: this.state.WorkingEx,
+      Achivements: this.state.Achivements,
+      Interests: this.state.Interests,
     }).then((response) => {
       console.log(response.data.data);
       Store.addNotification({
@@ -258,6 +281,7 @@ class ProfileForm extends React.Component {
                     name="FName"
                     style={{ width: "200px" }}
                     placeholder="First Name"
+                    defaultValue={this.state.fname}
                     value={this.state.fname}
                     onChange={(e) => {
                       console.log(e.target.value);
@@ -270,6 +294,7 @@ class ProfileForm extends React.Component {
                     name="LName"
                     style={{ width: "200px" }}
                     placeholder="Last Name"
+                    defaultValue={this.state.fname}
                     value={this.state.lName}
                     onChange={(e) => {
                       console.log(e.target.value);
@@ -293,6 +318,7 @@ class ProfileForm extends React.Component {
                   <Input
                     placeholder="Current Designation"
                     style={{ width: "200px" }}
+                    defaultValue={this.state.designation}
                     value={this.state.designation}
                     onChange={(e) => {
                       console.log(e.target.value);
@@ -306,13 +332,10 @@ class ProfileForm extends React.Component {
                 <Form.Item name="DOB" label="Date of Birth: ">
                   <DatePicker
                     placeholder="Date of Birth"
+                    defaultValue={moment(this.state.birthDay, dateFormat)}
+                    format={dateFormat}
                     value={this.state.birthDay}
-                    onChange={(e) => {
-                      console.log(e.target.value);
-                      this.setState({
-                        birthDay: e.target.value,
-                      });
-                    }}
+                    onChange={this.onChange}
                   />
                 </Form.Item>
 
@@ -329,6 +352,7 @@ class ProfileForm extends React.Component {
                   <Input
                     placeholder="Mobile Number"
                     style={{ width: "200px" }}
+                    defaultValue={this.state.mobileNo}
                     value={this.state.mobileNo}
                     onChange={(e) => {
                       console.log(e.target.value);
@@ -352,6 +376,7 @@ class ProfileForm extends React.Component {
                   <Input
                     placeholder="Address"
                     style={{ width: "200px", height: "60px" }}
+                    defaultValue={this.state.address}
                     value={this.state.address}
                     onChange={(e) => {
                       console.log(e.target.value);
@@ -375,6 +400,7 @@ class ProfileForm extends React.Component {
                   <Input
                     name="gmail"
                     placeholder="Gmail Input"
+                    defaultValue={this.state.gmail}
                     value={this.state.gmail}
                     onChange={(e) => {
                       console.log(e.target.value);
@@ -385,45 +411,12 @@ class ProfileForm extends React.Component {
                     style={{ width: "200px" }}
                   />
                 </Form.Item>
-                <Form.Item
-                  name={"name"}
-                  label="Name: "
-                  rules={[
-                    {
-                      required: true,
-                    },
-                  ]}
-                >
-                  <Input
-                    name="FName"
-                    style={{ width: "200px" }}
-                    placeholder="First Name"
-                    value={this.state.fname}
-                    onChange={(e) => {
-                      console.log(e.target.value);
-                      this.setState({
-                        fname: e.target.value,
-                      });
-                    }}
-                  />
-                  <Input
-                    name="LName"
-                    style={{ width: "200px" }}
-                    placeholder="Last Name"
-                    value={this.state.gmail}
-                    onChange={(e) => {
-                      console.log(e.target.value);
-                      this.setState({
-                        lName: e.target.value,
-                      });
-                    }}
-                  />
-                </Form.Item>
 
                 <Form.Item label="Ordinary Level Results : " name="OLResuls">
                   <TextArea
                     rows={4}
                     placeholder="Ordinary Level Results"
+                    defaultValue={this.state.olResult}
                     value={this.state.olResult}
                     onChange={(e) => {
                       console.log(e.target.value);
@@ -438,6 +431,7 @@ class ProfileForm extends React.Component {
                   <TextArea
                     rows={4}
                     placeholder="Advanced Level Results"
+                    defaultValue={this.state.alResult}
                     value={this.state.alResult}
                     onChange={(e) => {
                       console.log(e.target.value);
@@ -452,6 +446,7 @@ class ProfileForm extends React.Component {
                   <TextArea
                     rows={4}
                     placeholder="Higher Education"
+                    defaultValue={this.state.HighEdu}
                     value={this.state.HighEdu}
                     onChange={(e) => {
                       console.log(e.target.value);
@@ -466,6 +461,7 @@ class ProfileForm extends React.Component {
                   <TextArea
                     rows={4}
                     placeholder="Working Experince"
+                    defaultValue={this.state.WorkingEx}
                     value={this.state.WorkingEx}
                     onChange={(e) => {
                       console.log(e.target.value);
@@ -480,6 +476,7 @@ class ProfileForm extends React.Component {
                   <TextArea
                     rows={4}
                     placeholder="Ahievements"
+                    defaultValue={this.state.Achivements}
                     value={this.state.Achivements}
                     onChange={(e) => {
                       console.log(e.target.value);
@@ -494,6 +491,7 @@ class ProfileForm extends React.Component {
                   <TextArea
                     rows={4}
                     placeholder="Interests"
+                    defaultValue={this.state.Interests}
                     value={this.state.Interests}
                     onChange={(e) => {
                       console.log(e.target.value);
