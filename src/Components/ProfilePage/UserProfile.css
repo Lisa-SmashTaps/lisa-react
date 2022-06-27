@@ -1,0 +1,118 @@
+.profile__page {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    font-style: normal;
+}
+.profile__page .profile__container {
+    width: 700px;
+    height: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px -2px rgba(68, 78, 99, 0.3);
+    border-radius: 20px;
+}
+
+.profile__page .profile__container .profile__pic {
+    width: 50px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 30px;
+    width: 100%;
+    margin-top: 50px;
+    align-items: center;
+}
+.profile__page .profile__container .profile__pic img {
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+    border: 2px solid blue;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+.profile__page .profile__container .profile__heading {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.profile__page .profile__container .profile__heading p {
+    color: #0f96c3;
+    padding-left: 45px;
+    padding-bottom: 5px;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 33px;
+}
+.profile__page .profile__container .profile__heading hr {
+    width: 600px;
+    border: 1px solid #444e63;
+    opacity: 0.4;
+    margin-left: 45px;
+}
+.profile__page .profile__container .profile__heading input {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    height: 40px;
+    border: 1px solid #444e63;
+    opacity: 0.4;
+    line-height: 16px;
+}
+.profile__page .profile__container .profile__details {
+    margin-top: 10px;
+    width: 600px;
+    margin-left: 45px;
+   ;
+}
+.profile__page .profile__container .profile__details .container {
+    padding-left: 7px;
+}
+.profile__page .profile__container .profile__details h3 {
+    color: #0f96c3;
+}
+.profile__page .profile__container .profile__details p2 {
+    font-size: 18px;
+    font-weight: 350;
+    color: #444e63;
+}
+.profile__page .profile__container .profile__details hr {
+    opacity: 0.3;
+}
+.profile__page .profile__container .profile__details .bio {
+    text-align: justify;
+}
+.profile__page .profile__container .buttons {
+    margin-top: 80px;
+    justify-content: space-between;
+    margin-left: 60%;
+}
+.profile__page .profile__container .buttons button {
+    width: 200px;
+    height: 40px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    opacity: 0.8;
+}
+.profile__page .profile__container .buttons button:hover {
+    opacity: 1;
+}
+.profile__page .profile__container .buttons button.edit {
+    background-color: #0f96c3;
+    border: none;
+    color: #fff;
+    margin-right: 10%;
+    margin-bottom: 20px;
+}
