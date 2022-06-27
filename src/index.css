@@ -20,3 +20,12 @@ code {
   background-color:darkgreen !important;
   border-color:darkgreen;
 }
+
+div.ant-card-head {
+background: #99e6e6
+}
+
+div.ant-layout {
+  background: #99e6e6;
+
+}
