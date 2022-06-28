@@ -5,6 +5,7 @@ import HttpCommon from "../../http-common";
 import { v4 as uuidv4 } from "uuid";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Store } from "react-notifications-component";
 
 const EditPayroll = () => {
   const { id } = useParams();
@@ -94,10 +95,48 @@ const EditPayroll = () => {
       TotalSal: calcData.gross_salary - (calcData.epf_employee + calcData.etf),
     }).then((response) => {
       console.log(response.data.data);
+      Store.addNotification({
+        title: "Successfully Done!",
+        message: `Payroll Edited Successful!`,
+        type: "success",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true,
+        },
+      });
       setSalaryData(response.data.data);
       navigate("/allpayroll", { replace: true });
     });
   };
+
+  const handleDelete = (event) => {
+    //call the axios
+    event.preventDefault();
+    console.log(id);
+
+    HttpCommon.delete(`/api/salary/${id}`).then((response) => {
+      console.log(response.data.data);
+      Store.addNotification({
+        title: "Successfully Done!",
+        message: `Payroll Deleted Successful!`,
+        type: "success",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true,
+        },
+      });
+      navigate("/allpayroll", { replace: true });
+    });
+  };
+
   return (
     <div className="background">
       <Row>
@@ -196,7 +235,7 @@ const EditPayroll = () => {
             </Col>
           </Row>
           <Row>
-            <Col span={24} style={{ padding: "30px" }}>
+            <Col span={12} style={{ padding: "30px" }}>
               <Button
                 type="submit"
                 onClick={(e) => {
@@ -204,6 +243,16 @@ const EditPayroll = () => {
                 }}
               >
                 update Paysheet
+              </Button>
+            </Col>
+            <Col span={12} style={{ padding: "30px" }}>
+              <Button
+                type="submit"
+                onClick={(e) => {
+                  handleDelete(e);
+                }}
+              >
+                delete Paysheet
               </Button>
             </Col>
           </Row>

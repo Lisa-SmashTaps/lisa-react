@@ -32,9 +32,10 @@ const PayrollSearch = () => {
 
   function getData() {
     // let arr = [];
+    const EmpID = localStorage.getItem("EmpID");
     console.log(month);
     HttpCommon.post(`/api/salary/getAllSalaryByEmpIdAndMonth`, {
-      EmpID: "E001",
+      EmpID: EmpID,
       Month: month,
     }).then((response) => {
       console.log(response.data.data);

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { DatePicker, Row, Col, Button, Input, Form } from "antd";
 import HttpCommon from "../../http-common";
 import {v4 as uuidv4} from 'uuid'
-
+import { Store } from "react-notifications-component";
 
 const AdminPayroll = () => {
   const [salaryData, setSalaryData] = React.useState({
@@ -84,7 +84,19 @@ const AdminPayroll = () => {
       TotalSal: calcData.gross_salary - (calcData.epf_employee + calcData.etf),
     }).then((response) => {
       console.log(response.data.data);
-
+      Store.addNotification({
+        title: "Successfully Done!",
+        message: `Payroll Added Successful!`,
+        type: "success",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true,
+        },
+      });
       setSalaryData(response.data.data);
     });
   };
