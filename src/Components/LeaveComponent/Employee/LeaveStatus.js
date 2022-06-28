@@ -34,14 +34,19 @@ const LeaveStatus = (props) => {
 //     }
 //   ]
   const [data, setData] = useState([]);
+  const [EmpID, setEmpID] = useState(null);
 
-  useEffect(() => {
-    GetLeaves();
-  }, []);
+    useEffect(() => {
+      const EmpID = localStorage.getItem("EmpID");
+      setEmpID(EmpID);
+      GetLeaves(EmpID);
+    }, []);
+
 
   //get leave types
-  function GetLeaves() {
-    HttpCommon.get(`http://localhost:3005/api/leaveRequest/getAllLeaveRequestByEmpID/E001`).then((response) => {
+  function GetLeaves(EmpID) {
+    HttpCommon.get(`http://localhost:3005/api/leaveRequest/getAllLeaveRequestByEmpID/${EmpID}`).then((response) => {
+      console.log(response.data);
       setData(response.data.Items);
     });
   }
