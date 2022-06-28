@@ -1,16 +1,16 @@
 /* main.ant-layout-content{
   background-color: rgb(187, 204, 235); 
   border-top: 7px solid rgb(187, 204, 235);
-}
+} */
 
 body{
-  background-color: rgb(187, 204, 235);
-} */
+  background-color: #F0F2F5;
+}
 
 h2{
   margin-top: 30px;
   color:#356481;
-  font-size:24px;
+  font-size:30px;
   font-weight: 700;
 }
 table {

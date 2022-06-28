@@ -52,7 +52,7 @@ const PayrollSearch = () => {
     <div>
       <Row>
         <Col span={24}>
-          <h1>My Payroll</h1>
+          <h1 style={{color: "#356481",marginTop:"30px",textAlign:"center", fontWeight:"700",fontSize:"30px"}}>My Payroll</h1>
         </Col>
       </Row>
       <div style={{ padding: "100px" }}>

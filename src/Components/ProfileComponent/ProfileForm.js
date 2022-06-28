@@ -168,6 +168,7 @@ class ProfileForm extends React.Component {
         },
       });
     });
+    window.location.reload(false);
   };
 
   handleChange = (info) => {

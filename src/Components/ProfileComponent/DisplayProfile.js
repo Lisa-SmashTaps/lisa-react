@@ -60,7 +60,8 @@ const DisplayProfile = () => {
         </Col>
       </Row>
       <Row>
-        <h4>DOB :</h4>
+        <h4 style={{marginLeft:"20px",marginBottom:"25px"}}>DOB :</h4>
+        &nbsp;&nbsp;&nbsp;
         {EmpData !== null &&
           EmpData !== undefined &&
           EmpData.Item !== undefined && (
@@ -68,7 +69,8 @@ const DisplayProfile = () => {
           )}
       </Row>
       <Row>
-        <h4>Mobile Number :</h4>
+        <h4 style={{marginLeft:"20px",marginBottom:"25px"}}>Mobile Number :</h4>
+        &nbsp;&nbsp;&nbsp;
         {EmpData !== null &&
           EmpData !== undefined &&
           EmpData.Item !== undefined && (
@@ -76,7 +78,8 @@ const DisplayProfile = () => {
           )}
       </Row>
       <Row>
-        <h4>Address :</h4>
+        <h4 style={{marginLeft:"20px",marginBottom:"25px"}}>Address :</h4>
+        &nbsp;&nbsp;&nbsp;
         {EmpData !== null &&
           EmpData !== undefined &&
           EmpData.Item !== undefined && (
@@ -84,7 +87,8 @@ const DisplayProfile = () => {
           )}
       </Row>
       <Row>
-        <h4>Ordinary Level Results: </h4>
+        <h4 style={{marginLeft:"20px",marginBottom:"25px"}}>Ordinary Level Results: </h4>
+        &nbsp;&nbsp;&nbsp;
         {EmpData !== null &&
           EmpData !== undefined &&
           EmpData.Item !== undefined && (
@@ -92,7 +96,8 @@ const DisplayProfile = () => {
           )}
       </Row>
       <Row>
-        <h4>Advanced Level Results: </h4>
+        <h4 style={{marginLeft:"20px",marginBottom:"25px"}}>Advanced Level Results: </h4>
+        &nbsp;&nbsp;&nbsp;
         {EmpData !== null &&
           EmpData !== undefined &&
           EmpData.Item !== undefined && (
@@ -100,7 +105,8 @@ const DisplayProfile = () => {
           )}
       </Row>
       <Row>
-        <h4>Higher Education: </h4>
+        <h4 style={{marginLeft:"20px",marginBottom:"25px"}}>Higher Education: </h4>
+        &nbsp;&nbsp;&nbsp;
         {EmpData !== null &&
           EmpData !== undefined &&
           EmpData.Item !== undefined && (
@@ -108,7 +114,8 @@ const DisplayProfile = () => {
           )}
       </Row>
       <Row>
-        <h4>Working Experince: </h4>
+        <h4 style={{marginLeft:"20px",marginBottom:"25px"}}>Working Experince: </h4>
+        &nbsp;&nbsp;&nbsp;
         {EmpData !== null &&
           EmpData !== undefined &&
           EmpData.Item !== undefined && (
@@ -116,7 +123,8 @@ const DisplayProfile = () => {
           )}
       </Row>
       <Row>
-        <h4>Achievements: </h4>
+        <h4 style={{marginLeft:"20px",marginBottom:"25px"}}>Achievements: </h4>
+        &nbsp;&nbsp;&nbsp;
         {EmpData !== null &&
           EmpData !== undefined &&
           EmpData.Item !== undefined && (
@@ -124,7 +132,8 @@ const DisplayProfile = () => {
           )}
       </Row>
       <Row>
-        <h4>Interests: </h4>
+        <h4 style={{marginLeft:"20px",marginBottom:"25px"}}>Interests: </h4>
+        &nbsp;&nbsp;&nbsp;
         {EmpData !== null &&
           EmpData !== undefined &&
           EmpData.Item !== undefined && (

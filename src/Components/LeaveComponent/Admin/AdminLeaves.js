@@ -75,7 +75,7 @@ const [data, setData] = useState([]);
 
     return(
         <div className="LeaveMainAdmin">
-        <h1>Requested Leaves</h1>
+        <h1 style={{color: "#356481",marginTop:"30px",textAlign:"center", fontWeight:"700",fontSize:"30px"}}>Requested Leaves</h1>
         <Table 
             dataSource={data}
             columns={columns}

@@ -141,7 +141,7 @@ const EditPayroll = () => {
     <div className="background">
       <Row>
         <Col span={24}>
-          <h1 style={{ textAlign: "center", fontSize: "40px" }}>Payroll</h1>
+          <h1 style={{color: "#356481",marginTop:"30px",textAlign:"center", fontWeight:"700",fontSize:"30px"}}>Payroll</h1>
         </Col>
       </Row>
       <div style={{ padding: "100px" }}>
