@@ -63,7 +63,6 @@ const Searchpage = () => {
                         enterButton="Search Employee"
                         size="large"
                         style={{ padding: "10px", marginLeft: "auto", marginRight: "auto" }}
-                        onSearch={onSearch}
                         onChange={(e) => setSearch(e.currentTarget.value)}
                         suffix={<SearchOutlined />}
                     />
@@ -74,6 +73,7 @@ const Searchpage = () => {
                     <tr>
                         <th scope="col"></th>
                         <th scope="col">Name</th>
+                        <th scope="col">UserType</th>
                         <th scope="col">Designation</th>
                     </tr>
                 </thead>
@@ -82,6 +82,7 @@ const Searchpage = () => {
                         <tr key={req.EmpID}>
                             <Link to={`/profile/${req.EmpID}`}><td data-label=""> <LetteredAvatar name={`${req.FName} ${req.LName}`} size={50} /></td></Link>
                             <td data-label="Name">{`${req.FName} ${req.LName}`}</td>
+                            <td data-label="UserType">{req.UserRole}</td>
                             <td data-label="Designation">{req.Designation}</td>
                         </tr>
                     ))}
